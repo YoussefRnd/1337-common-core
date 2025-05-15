@@ -1,0 +1,38 @@
+NAME = account
+
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+RM = rm -fr
+MKDIR = mkdir -p
+
+OBJ_DIR = ./obj
+
+HEADERS = $(wildcard ./*.hpp)
+SRCS = $(wildcard ./*.cpp)
+OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
+
+all: $(NAME)
+
+$(OBJ_DIR):
+	@$(MKDIR) $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: %.cpp $(HEADERS) | $(OBJ_DIR)
+	@echo "Compiling $<..."
+	@$(CC) $(CFLAGS) -I. -c $< -o $@
+
+$(NAME): $(OBJS)
+	@echo "Building $(NAME)..."
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	@echo "$(NAME) is ready!"
+
+clean:
+	@echo "Cleaning object files..."
+	@$(RM) $(OBJ_DIR)
+
+fclean: clean
+	@echo "Cleaning $(NAME)..."
+	@$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re $(OBJ_DIR)
