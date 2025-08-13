@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yboumlak <yboumlak@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yboumlak <yboumlak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 17:05:58 by yboumlak          #+#    #+#             */
-/*   Updated: 2025/05/12 23:52:56 by yboumlak         ###   ########.fr       */
+/*   Updated: 2025/05/31 22:12:36 by yboumlak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include <map>
 #include <string>
@@ -20,8 +22,8 @@
 class BitcoinExchange {
   public:
     BitcoinExchange();
-    ~BitcoinExchange();
     BitcoinExchange(const BitcoinExchange &other);
+    ~BitcoinExchange();
     BitcoinExchange &operator=(const BitcoinExchange &other);
 
     std::map<std::string, double> getExchangeRate() const ;
